@@ -6,7 +6,7 @@
 /* appearance */
 static const int sloppyfocus               = 1;  /* focus follows mouse */
 static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
-static const unsigned int borderpx         = 1;  /* border pixel of windows */
+static const unsigned int borderpx         = 3;  /* border pixel of windows */
 static const int smartgaps                 = 0;  /* 1 means no outer gap when there is only one window */
 static const int monoclegaps               = 0;  /* 1 means outer gaps in monocle layout */
 static const unsigned int gappih           = 8; /* horiz inner gap between windows */
@@ -28,7 +28,8 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
+	"/usr/lib/pam_kwallet_init", NULL,
+        "/usr/lib/polkit-kde-authentication-agent-1", NULL,
         NULL /* terminate */
 };
 
@@ -136,7 +137,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "konsole", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun" };
-static const char *browsercmd[] = { "brave", NULL };
+static const char *browsercmd[] = { "brave", "--enable-features=TouchpadOverscrollHistoryNavigation,UseOzonePlatform", "--ozone-platform=wayland", NULL };
 static const char *filemanagercmd[] = { "dolphin", NULL };
 
 static const Key keys[] = {
