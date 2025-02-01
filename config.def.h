@@ -51,6 +51,7 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 	{ "@|@",      snail },
 	{ "[D]",      deck },
+	{ "|M|",      centeredmaster },
 };
 
 /* monitors */
@@ -168,6 +169,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_m,          setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                    XKB_KEY_s,          setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                    XKB_KEY_d,          setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                    XKB_KEY_c,          setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
 	{ MODKEY,                    XKB_KEY_n,          nextlayout,     {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_space,      togglefloating, {0} },
