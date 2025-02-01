@@ -28,7 +28,7 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "wbg", "/path/to/your/image", NULL,
+        "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
         NULL /* terminate */
 };
 
