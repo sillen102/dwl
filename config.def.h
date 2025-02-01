@@ -137,7 +137,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "konsole", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun" };
-static const char *browsercmd[] = { "brave", "--enable-features=TouchpadOverscrollHistoryNavigation,UseOzonePlatform", "--ozone-platform=wayland", NULL };
+static const char *browsercmd[] = { "firefox", NULL };
 static const char *filemanagercmd[] = { "dolphin", NULL };
 
 static const Key keys[] = {
