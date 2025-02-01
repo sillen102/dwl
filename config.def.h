@@ -28,9 +28,10 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-	"/usr/lib/pam_kwallet_init", NULL,
-        "/usr/lib/polkit-kde-authentication-agent-1", NULL,
-        NULL /* terminate */
+    "/usr/lib/pam_kwallet_init", NULL,
+    "/usr/lib/polkit-kde-authentication-agent-1", NULL,
+    "kanshi", NULL,
+    NULL /* terminate */
 };
 
 
@@ -62,7 +63,7 @@ static const Layout layouts[] = {
 /* NOTE: ALWAYS add a fallback rule, even if you are completely sure it won't be used */
 static const MonitorRule monrules[] = {
 /* name       mfact  nmaster scale layout       rotate/reflect                x    y */
-	{ "eDP-1",    0.5f,  1,      1.75, &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
+	// { "eDP-1",    0.5f,  1,      1.75, &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
 	/* defaults */
 	{ NULL,       0.64f, 1,      1,    &layouts[3], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
 };
@@ -163,7 +164,7 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_g,          defaultgaps,    {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
-	{ MODKEY,                    XKB_KEY_q,          killclient,     {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          killclient,     {0} },
 	{ MODKEY,                    XKB_KEY_t,          setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                    XKB_KEY_f,          setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                    XKB_KEY_m,          setlayout,      {.v = &layouts[2]} },
@@ -189,7 +190,7 @@ static const Key keys[] = {
 	TAGKEYS(          XKB_KEY_7, XKB_KEY_slash,                      6),
 	TAGKEYS(          XKB_KEY_8, XKB_KEY_parenleft,                  7),
 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenright,                 8),
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
+	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_q,          quit,           {0} },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
