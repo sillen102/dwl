@@ -28,9 +28,12 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-    "/usr/lib/pam_kwallet_init", NULL,
+	"dbus-update-activation-environment DISPLAY", NULL,
+	"/usr/lib/pam_kwallet_init", NULL,
     "/usr/lib/polkit-kde-authentication-agent-1", NULL,
     "kanshi", NULL,
+	"/usr/local/bin/lid-close.sh", NULL,
+	"nm-applet", NULL,
     NULL /* terminate */
 };
 
@@ -139,7 +142,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "konsole", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun" };
-static const char *browsercmd[] = { "firefox", NULL };
+static const char *browsercmd[] = { "google-chrome-stable", "--enable-features=TouchpadOverscrollHistoryNavigation", "--ozone-platform=wayland", NULL };
 static const char *filemanagercmd[] = { "dolphin", NULL };
 
 static const Key keys[] = {
@@ -148,7 +151,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_b,          spawn,          {.v = browsercmd} },
-	{ MODKEY,                    XKB_KEY_F2,         spawn,          {.v = filemanagercmd} },
+	{ MODKEY,                    XKB_KEY_f,         spawn,          {.v = filemanagercmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_B,          togglebar,      {0} },
 	{ MODKEY,                    XKB_KEY_Up,         focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_Down,       focusstack,     {.i = -1} },
@@ -165,12 +168,12 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          killclient,     {0} },
-	{ MODKEY,                    XKB_KEY_t,          setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                    XKB_KEY_f,          setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                    XKB_KEY_m,          setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                    XKB_KEY_s,          setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                    XKB_KEY_d,          setlayout,      {.v = &layouts[4]} },
-	{ MODKEY,                    XKB_KEY_c,          setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_t,          setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_f,          setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_m,          setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_s,          setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_d,          setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_c,          setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
 	{ MODKEY,                    XKB_KEY_n,          nextlayout,     {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_space,      togglefloating, {0} },
